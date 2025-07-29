@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     #region Properties
     [SerializeField]
-    private float _speed = 6f;
+    private float _speed = 3f;
 
     private Vector3 _velocity;
     #endregion
@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
 
     [SerializeField]
-    private Animator _animator;
+    private PlayerAnimationController _animatorController;
     #endregion
 
     #region Methods
@@ -31,16 +31,20 @@ public class PlayerController : MonoBehaviour
 
         _velocity = new Vector3(value.x, 0, value.y) * _speed;
 
-        if (_animator) 
+        if (_animatorController) 
         {
-            _animator.SetFloat("RunSpeed", _velocity.magnitude);
+            _animatorController.UpdateRunSpeed(_velocity.magnitude);
         }
     }
 
     private void FixedUpdate()
     {
         _rb.AddForce(_velocity, ForceMode.VelocityChange);
-        transform.forward = _velocity.normalized;
+
+        if (_velocity != Vector3.zero) 
+        {
+            transform.forward = _velocity.normalized;
+        }
     }
     #endregion
 }
