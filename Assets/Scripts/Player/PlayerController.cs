@@ -6,20 +6,28 @@ public class PlayerController : MonoBehaviour
 {
     #region Properties
     [SerializeField]
-    private float _speed = 3f;
+    private float speed = 3f;
 
-    private Vector3 _velocity;
+    private Vector3 velocity;
     #endregion
 
     #region References
     [SerializeField]
-    private Rigidbody _rb;
+    private Rigidbody rb;
 
     [SerializeField]
-    private PlayerAnimationController _animatorController;
+    private PlayerAnimationController animatorController;
     #endregion
 
     #region Methods
+    private void Awake()
+    {
+        if (!rb) 
+        {
+            rb = GetComponent<Rigidbody>();
+        }
+    }
+
     public void OnMove(InputValue input)
     {
         var value = input.Get<Vector2>();
@@ -29,21 +37,21 @@ public class PlayerController : MonoBehaviour
             value.Normalize();
         }
 
-        _velocity = new Vector3(value.x, 0, value.y) * _speed;
+        velocity = new Vector3(value.x, 0, value.y) * speed;
 
-        if (_animatorController) 
+        if (animatorController) 
         {
-            _animatorController.UpdateRunSpeed(_velocity.magnitude);
+            animatorController.UpdateRunSpeed(velocity.magnitude);
         }
     }
 
     private void FixedUpdate()
     {
-        _rb.AddForce(_velocity, ForceMode.VelocityChange);
+        rb.AddForce(velocity, ForceMode.VelocityChange);
 
-        if (_velocity != Vector3.zero) 
+        if (velocity != Vector3.zero) 
         {
-            transform.forward = _velocity.normalized;
+            transform.forward = velocity.normalized;
         }
     }
     #endregion

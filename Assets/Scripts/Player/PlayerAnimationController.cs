@@ -5,36 +5,44 @@ public class PlayerAnimationController : MonoBehaviour
 {
     #region Properties
     [SerializeField]
-    private float _runningSpeedThreshold = 2f;
+    private float runningSpeedThreshold = 2f;
 
     [SerializeField]
-    private float _maxRunningSpeed = 3f;
+    private float maxRunningSpeed = 3f;
     #endregion
 
     #region References
     [SerializeField]
-    private Animator _animator;
+    private Animator animator;
     #endregion
 
     #region Methods
+    private void Awake()
+    {
+        if (!animator) 
+        {
+            animator = GetComponent<Animator>();
+        }
+    }
+
     public void UpdateRunSpeed(float speed) 
     {
-        _animator.SetFloat("RunSpeed", speed);
+        animator.SetFloat("RunSpeed", speed);
         float animSpeed = 1;
         // Change the animation speed to match the physic speed using predefined values for the threshold to start running and the max speed
         // Running animation
-        if (speed > _runningSpeedThreshold)
+        if (speed > runningSpeedThreshold)
         {
             // Scale running between 0.5 and 1 for better results
-            animSpeed = (speed - _runningSpeedThreshold) / (_maxRunningSpeed - _runningSpeedThreshold) * 0.5f + 0.5f;
+            animSpeed = (speed - runningSpeedThreshold) / (maxRunningSpeed - runningSpeedThreshold) * 0.5f + 0.5f;
         }
         // Walking animation 
         else if (speed > 0.1f)
         {
-            animSpeed = speed / _runningSpeedThreshold;
+            animSpeed = speed / runningSpeedThreshold;
         }
 
-        _animator.speed = animSpeed;
+        animator.speed = animSpeed;
     }
     #endregion
 }
