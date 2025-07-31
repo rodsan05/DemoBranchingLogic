@@ -15,6 +15,7 @@ public class BaseNode : Node
 	public virtual void InitializeNode(DecisionTreeController _decisionTreeController) 
 	{
 		decisionTreeController = _decisionTreeController;
+		ResetNodeValues();
 	}
 
 	public virtual void OnNodeEnter() 
@@ -26,6 +27,10 @@ public class BaseNode : Node
 	}
 
 	public virtual void OnNodeUpdate() 
+	{
+	}
+
+	public virtual void ResetNodeValues() 
 	{
 	}
     #endregion

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : CharacterBase
 {
     #region Properties
     [SerializeField]
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Methods
-    private void Awake()
+    private void Start()
     {
         if (!rb) 
         {

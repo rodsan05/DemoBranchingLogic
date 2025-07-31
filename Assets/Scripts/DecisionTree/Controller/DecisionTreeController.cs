@@ -24,12 +24,19 @@ public class DecisionTreeController : MonoBehaviour
 
             if (decisionGraph.current is DecisionNode decisionNode)
             {
-                nextNode = decisionNode.GetOutputPort("choice " + decisionNode.choiceIdx).node as BaseNode;
+                nextNode = decisionNode.GetOutputPort("choice " + decisionNode.ChoiceIndex).Connection.node as BaseNode;
+            }
+
+            else if (decisionGraph.current is EndNode) 
+            {
+                // Handle Decision Tree ending, for now it deactivates
+                this.gameObject.SetActive(false);
+                return;
             }
 
             else
             {
-                nextNode = decisionGraph.current.GetOutputPort("exit").node as BaseNode;
+                nextNode = decisionGraph.current.GetOutputPort("exit").Connection.node as BaseNode;
             }
 
             decisionGraph.current = nextNode;

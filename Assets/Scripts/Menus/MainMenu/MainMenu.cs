@@ -23,7 +23,8 @@ public class MainMenu : MonoBehaviour
 
     public void OnLoaderLoaded(Scene scene, LoadSceneMode loadSceneMode) 
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("MainScene", LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync("MainMenu");
         SceneManager.sceneLoaded -= OnLoaderLoaded;
     }
 

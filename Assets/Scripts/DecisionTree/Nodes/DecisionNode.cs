@@ -6,13 +6,21 @@ public class DecisionNode : BaseNode
     [Input] public int entry;
     [Output(dynamicPortList = true)] public string[] choice;
 
-    public int choiceIdx = -1;
+    private int choiceIndex = -1;
+    public int ChoiceIndex { get => choiceIndex; }
     #endregion
 
     #region Methods
     public override bool Evaluate()
     {
-        return choiceIdx != -1;
+        return choiceIndex != -1;
+    }
+
+    public override void ResetNodeValues()
+    {
+        base.ResetNodeValues();
+
+        choiceIndex = -1;
     }
     #endregion
 }

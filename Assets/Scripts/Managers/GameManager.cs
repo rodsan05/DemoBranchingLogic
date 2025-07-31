@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,9 +9,8 @@ public class GameManager : MonoBehaviour
     }
 
     #region References
-    [SerializeField]
-    private PlayableDirector director;
-    public PlayableDirector Director { set => director = value; get => director; }
+    private CinematicManager cinematicManager;
+    public CinematicManager CinematicManager { set => cinematicManager = value; get => cinematicManager; }
     #endregion
 
     #region Methods
@@ -21,7 +19,7 @@ public class GameManager : MonoBehaviour
         if (instance == null) 
         {
             instance = this;
-            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(this.gameObject);
         }
         else if (instance != this) 
         {

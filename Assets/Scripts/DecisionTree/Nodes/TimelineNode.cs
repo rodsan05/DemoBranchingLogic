@@ -19,6 +19,7 @@ public class TimelineNode : BaseNode
     public void OnTimelineEnded(PlayableDirector director) 
     {
         timelineEnded = true;
+        director.stopped -= OnTimelineEnded;
     }
 
     public override bool Evaluate()
@@ -26,27 +27,21 @@ public class TimelineNode : BaseNode
         return timelineEnded;
     }
 
+    public override void ResetNodeValues()
+    {
+        base.ResetNodeValues();
+
+        timelineEnded = false;
+    }
+
     public override void OnNodeEnter()
     {
         base.OnNodeEnter();
 
-        PlayableDirector director = GameManager.Instance.Director;
-        if (director != null) 
+        CinematicManager cinematicManager = GameManager.Instance.CinematicManager;
+        if (cinematicManager != null) 
         {
-            director.playableAsset = timeline;
-            director.stopped += OnTimelineEnded;
-            director.Play();
-        }
-    }
-
-    public override void OnNodeExit()
-    {
-        base.OnNodeExit();
-
-        PlayableDirector director = GameManager.Instance.Director;
-        if (director != null)
-        {
-            director.stopped -= OnTimelineEnded;
+            cinematicManager.PlayTimeline(timeline, OnTimelineEnded);
         }
     }
     #endregion
