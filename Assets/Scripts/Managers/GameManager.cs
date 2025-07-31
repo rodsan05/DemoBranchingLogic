@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     #region References
     private CinematicManager cinematicManager;
     public CinematicManager CinematicManager { set => cinematicManager = value; get => cinematicManager; }
+
+    private DecisionManager decisionManager;
+    public DecisionManager DecisionManager { get => decisionManager; set => decisionManager = value; }
     #endregion
 
     #region Methods
