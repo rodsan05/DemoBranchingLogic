@@ -15,17 +15,29 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void StartGame() 
+    public void FadeAndLoadMainScene() 
     {
-        SceneManager.LoadScene("GameplayLoader", LoadSceneMode.Additive);
+        GameManager.Instance.FadeTransition(GameManager.TransitionType.FadeOut, 1.0f, LoadMainScene);
+    }
+
+    private void LoadMainScene() 
+    {
+        SceneManager.LoadSceneAsync(SceneNames.GameplayLoader.ToString(), LoadSceneMode.Additive);
         SceneManager.sceneLoaded += OnLoaderLoaded;
     }
 
-    public void OnLoaderLoaded(Scene scene, LoadSceneMode loadSceneMode) 
+    private void OnLoaderLoaded(Scene scene, LoadSceneMode loadSceneMode) 
     {
-        SceneManager.LoadScene("MainScene", LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync("MainMenu");
+        SceneManager.LoadSceneAsync(SceneNames.MainScene.ToString(), LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync(SceneNames.MainMenu.ToString());
         SceneManager.sceneLoaded -= OnLoaderLoaded;
+        SceneManager.sceneUnloaded += OnMenuUnloaded;
+    }
+
+    private void OnMenuUnloaded(Scene scene) 
+    {
+        GameManager.Instance.FadeTransition(GameManager.TransitionType.FadeIn, 1.0f);
+        SceneManager.sceneUnloaded -= OnMenuUnloaded;
     }
 
     public void ExitApp() 

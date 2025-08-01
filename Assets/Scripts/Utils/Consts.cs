@@ -4,3 +4,10 @@ public enum DeclaredEvents
     CinematicStart,
     CinematicEnded
 }
+
+public enum SceneNames 
+{
+    MainMenu,
+    MainScene,
+    GameplayLoader
+}

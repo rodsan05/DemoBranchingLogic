@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
+using DG.Tweening;
 
 public class TimelineNode : BaseNode
 {
@@ -37,9 +38,13 @@ public class TimelineNode : BaseNode
     public override void OnNodeEnter()
     {
         base.OnNodeEnter();
+        GameManager.Instance.FadeTransition(GameManager.TransitionType.FadeOut, 1f, PlayTimeline);
+    }
 
+    private void PlayTimeline()
+    {
         CinematicManager cinematicManager = GameManager.Instance.CinematicManager;
-        if (cinematicManager != null) 
+        if (cinematicManager != null)
         {
             cinematicManager.PlayTimeline(timeline, OnTimelineEnded);
         }

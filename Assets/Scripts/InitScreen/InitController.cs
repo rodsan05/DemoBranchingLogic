@@ -6,7 +6,7 @@ public class InitController : MonoBehaviour
     #region Methods
     void Start()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(SceneNames.MainMenu.ToString());
     }
     #endregion
 }

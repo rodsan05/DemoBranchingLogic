@@ -1083,7 +1083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3867427060732974627, guid: 4f7ed46e59fc51441b48c1defe0ee044, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartGame
+      value: FadeAndLoadMainScene
       objectReference: {fileID: 0}
     - target: {fileID: 3867427060732974627, guid: 4f7ed46e59fc51441b48c1defe0ee044, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

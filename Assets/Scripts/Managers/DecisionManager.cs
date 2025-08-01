@@ -22,6 +22,7 @@ public class DecisionManager : MonoBehaviour
         if (decisionPromptScript) 
         {
             decisionPromptScript.SetChoices(decisionNode.choices);
+            GameManager.Instance.PauseGameplay();
         }
     }
 
@@ -33,6 +34,7 @@ public class DecisionManager : MonoBehaviour
             currentDecisionNode = null;
 
             decisionPromptScript.HideChoicePrompt();
+            GameManager.Instance.ResumeGameplay();
         }
     }
     #endregion

@@ -24,7 +24,7 @@ public class DecisionTreeController : MonoBehaviour
 
             if (decisionGraph.current is DecisionNode decisionNode)
             {
-                nextNode = decisionNode.GetOutputPort("choice " + decisionNode.ChoiceIndex).Connection.node as BaseNode;
+                nextNode = decisionNode.GetOutputPort("choices " + decisionNode.ChoiceIndex).Connection.node as BaseNode;
             }
 
             else if (decisionGraph.current is EndNode) 
