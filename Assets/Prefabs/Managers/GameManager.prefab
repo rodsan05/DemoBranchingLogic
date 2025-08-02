@@ -58,7 +58,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &5273403073030899188
 GameObject:
@@ -145,6 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4158408587796226941}
   - component: {fileID: 8753132552116255379}
+  - component: {fileID: 3692579729810438763}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -181,3 +182,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackScreen: {fileID: 2670590773590729013}
+--- !u!114 &3692579729810438763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6291101800422888868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a884886694e334ba439261746274dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

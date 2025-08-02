@@ -11,9 +11,10 @@ public class ReachPointTrigger : BaseQuestItem
     {
         if (other.GetComponent<PlayerController>())
         {
-            if (quest is ReachPointQuest)
+            if (quest.QuestType == QuestType.ReachPoint)
             {
                 quest.CompleteQuest();
+                GameManager.Instance.CinematicManager?.RepositionDirector(transform.position);
             }
         }
     }

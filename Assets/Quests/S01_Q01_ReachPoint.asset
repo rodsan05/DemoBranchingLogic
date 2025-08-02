@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b08cc72aafcaa154a9a07d366b257f13, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ccbd931643251846ad23fa647aa0563, type: 3}
   m_Name: S01_Q01_ReachPoint
   m_EditorClassIdentifier: 
-  questItems:
+  questType: 1
+  temporalQuestItems:
   - {fileID: 6559557321268384948, guid: b65bd0db673da2d4383a20f493fe0f35, type: 3}
   permanentQuestItems: []

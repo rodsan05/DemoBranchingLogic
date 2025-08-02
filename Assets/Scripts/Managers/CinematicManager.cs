@@ -51,5 +51,13 @@ public class CinematicManager : MonoBehaviour
             director.Stop();
         }
     }
+
+    public void RepositionDirector(Vector3 position) 
+    {
+        if (director) 
+        {
+            director.transform.position = position;
+        }
+    }
     #endregion
 }

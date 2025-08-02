@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{1e859c2b-17b2-4bc2-bf26-1332fed0b4c4}">
+		<property name="assetPath">
+			<value>NPC_S03_02_L01.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>22.0499992</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>3.8399999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{715feb57-c473-446f-8cd0-1f899ced2907}</destination>
+		</relationship>
+	</object>
+</objects>

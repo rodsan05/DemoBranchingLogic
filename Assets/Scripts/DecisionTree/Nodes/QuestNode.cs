@@ -13,13 +13,13 @@ public class QuestNode : BaseNode
     #endregion
 
     #region References
-    public BaseQuest quest;
+    public QuestInfo quest;
     #endregion
 
     #region Methods
     public override bool Evaluate()
     {
-        return quest.Completed;
+        return GameManager.Instance.QuestManager.IsCurrentQuestCompleted();
     }
 
     public override void ResetNodeValues()
@@ -31,7 +31,13 @@ public class QuestNode : BaseNode
     {
         base.OnNodeEnter();
 
-        quest?.StartQuest();
+        GameManager.Instance.QuestManager?.StartNewQuest(quest);
+    }
+
+    public override void OnNodeExit() 
+    {
+        GameManager.Instance.QuestManager?.EndCurrentQuest();
+
     }
     #endregion
 }

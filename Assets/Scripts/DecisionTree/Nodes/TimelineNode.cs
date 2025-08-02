@@ -43,6 +43,8 @@ public class TimelineNode : BaseNode
 
     private void PlayTimeline()
     {
+        GameManager.Instance.FadeTransition(GameManager.TransitionType.FadeIn, 1f);
+
         CinematicManager cinematicManager = GameManager.Instance.CinematicManager;
         if (cinematicManager != null)
         {

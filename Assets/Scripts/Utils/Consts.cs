@@ -11,3 +11,9 @@ public enum SceneNames
     MainScene,
     GameplayLoader
 }
+
+public enum QuestType 
+{
+    None,
+    ReachPoint
+}

@@ -1,10 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using UnityEngine.SceneManagement;
-using UnityEngine.Events;
 using System;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     private DecisionManager decisionManager;
     public DecisionManager DecisionManager { get => decisionManager; set => decisionManager = value; }
+
+    private QuestManager questManager;
+    public QuestManager QuestManager { get => questManager; set => questManager = value; }
 
     [SerializeField]
     private Image blackScreen;
@@ -45,7 +47,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        FadeTransition(TransitionType.FadeOut, 0f);
+        FadeTransition(TransitionType.FadeIn, 0f);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            ReturnToMainMenu();
+        }
     }
 
     public void FadeTransition(TransitionType transition, float time, Action onTransitionEnded = null) 
@@ -77,6 +87,14 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         callback.Invoke();
+    }
+
+    private void ReturnToMainMenu() 
+    {
+        if (SceneManager.GetActiveScene().name != SceneNames.MainMenu.ToString()) 
+        {
+            SceneManager.LoadScene(SceneNames.MainMenu.ToString());
+        }
     }
 
     public void PauseGameplay() 

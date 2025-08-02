@@ -15,7 +15,7 @@ public class AnimatedButton : Button
     {
         base.OnSelect(eventData);
 
-        transform.DOScale(new Vector3(selectedScale, selectedScale, selectedScale), scaleAnimDuration);
+        transform?.DOScale(new Vector3(selectedScale, selectedScale, selectedScale), scaleAnimDuration).SetUpdate(true);
     }
 
     public override void OnSubmit(BaseEventData eventData)
@@ -23,8 +23,8 @@ public class AnimatedButton : Button
         base.OnSubmit(eventData);
 
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(transform.DOScale(Vector3.one, scaleAnimDuration / 2));
-        sequence.Append(transform.DOScale(new Vector3(selectedScale, selectedScale, selectedScale), scaleAnimDuration / 2));
+        sequence.Append(transform.DOScale(Vector3.one, scaleAnimDuration / 2).SetUpdate(true));
+        sequence.Append(transform.DOScale(new Vector3(selectedScale, selectedScale, selectedScale), scaleAnimDuration / 2).SetUpdate(true));
         sequence.Play();
     }
 
@@ -32,12 +32,12 @@ public class AnimatedButton : Button
     {
         base.OnDeselect(eventData);
 
-        transform.DOScale(Vector3.one, scaleAnimDuration);
+        transform?.DOScale(Vector3.one, scaleAnimDuration).SetUpdate(true);
     }
 
     protected override void OnDestroy()
     {
-        DOTween.CompleteAll();
+        //DOTween.CompleteAll();
     }
     #endregion
 }

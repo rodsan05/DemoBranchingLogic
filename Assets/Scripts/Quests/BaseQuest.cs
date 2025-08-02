@@ -1,72 +1,114 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseQuest : ScriptableObject
+public class BaseQuest
 {
     #region Properties
-    private bool completed;
-    public bool Completed { get => completed; set => completed = value; }
+    private bool completed = false;
+    public bool Completed { get => completed; }
+
+    public QuestType QuestType 
+    {
+        get 
+        {
+            if (!questInfo) 
+            {
+                return QuestType.None;
+            }
+
+            return questInfo.QuestType;
+        } 
+    }
     #endregion
 
     #region References
-    [SerializeField]
-    private List<GameObject> questItems;
+    protected QuestInfo questInfo;
+    protected QuestManager questManager;
 
-    [SerializeField]
-    private List<GameObject> permanentQuestItems;
+    protected List<GameObject> temporalItems = new List<GameObject>();
+    protected List<GameObject> permanentItems = new List<GameObject>();
     #endregion
 
     #region Methods
-    public virtual void StartQuest() 
+    public virtual void InitializeQuest(QuestManager manager, QuestInfo info) 
     {
-        ToggleQuestItems(true);
-        TogglePermanentQuestItems();
+        questInfo = info;
+        questManager = manager;
+
+        InstantiateQuestItems();
     }
 
-    public virtual void CompleteQuest() 
+    public virtual void StartQuest()
     {
-        ToggleQuestItems(false);
+        ToggleTemporalQuestItems(true);
+        TogglePermanentQuestItems(true);
+    }
+
+    public virtual void CompleteQuest()
+    {
         completed = true;
     }
-    
-    public virtual void ToggleQuestItems(bool active) 
-    {
-        if (questItems != null) 
-        {
-            foreach (GameObject item in questItems) 
-            {
-                if (active) 
-                {
-                    Instantiate(item);
-                    // Check if there are quest items to assing its quest to this
-                    BaseQuestItem questItem = item.GetComponent<BaseQuestItem>();
-                    if (questItem) 
-                    {
-                        questItem.InitializeItem(this);
-                    }
-                }
 
-                else 
-                {
-                    item.SetActive(false);
-                }
+    public virtual void EndQuest() 
+    {
+        ToggleTemporalQuestItems(false);
+    }
+
+    public virtual void ToggleTemporalQuestItems(bool active)
+    {
+        if (temporalItems != null)
+        {
+            foreach (GameObject item in temporalItems)
+            {
+                item.SetActive(active);
             }
         }
     }
 
-    public virtual void TogglePermanentQuestItems() 
+    public virtual void TogglePermanentQuestItems(bool active)
     {
-        if (permanentQuestItems != null)
+        if (permanentItems != null)
         {
-            foreach (GameObject item in permanentQuestItems)
+            foreach (GameObject item in permanentItems)
             {
-                Instantiate(item);
+                item.SetActive(active);
+            }
+        }
+    }
+
+    public virtual void InstantiateQuestItems()
+    {
+        if (questInfo.TemporalQuestItems != null)
+        {
+            foreach (GameObject item in questInfo.TemporalQuestItems)
+            {
+                GameObject itemInstance = GameObject.Instantiate(item);
+                itemInstance.SetActive(false);
                 // Check if there are quest items to assing its quest to this
-                BaseQuestItem questItem = item.GetComponent<BaseQuestItem>();
+                BaseQuestItem questItem = itemInstance.GetComponent<BaseQuestItem>();
                 if (questItem)
                 {
                     questItem.InitializeItem(this);
                 }
+
+                temporalItems.Add(itemInstance);
+            }
+        }
+
+        if (questInfo.PermanentQuestItems != null)
+        {
+            foreach (GameObject item in questInfo.PermanentQuestItems)
+            {
+                GameObject itemInstance = GameObject.Instantiate(item);
+                itemInstance.SetActive(false);
+                // Check if there are quest items to assing its quest to this
+                BaseQuestItem questItem = itemInstance.GetComponent<BaseQuestItem>();
+                if (questItem)
+                {
+                    questItem.InitializeItem(this);
+                }
+
+                permanentItems.Add(itemInstance);
             }
         }
     }

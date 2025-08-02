@@ -17,10 +17,10 @@ public class MainMenu : MonoBehaviour
 
     public void FadeAndLoadMainScene() 
     {
-        GameManager.Instance.FadeTransition(GameManager.TransitionType.FadeOut, 1.0f, LoadMainScene);
+        GameManager.Instance.FadeTransition(GameManager.TransitionType.FadeOut, 1.0f, LoadGameplayLoader);
     }
 
-    private void LoadMainScene() 
+    private void LoadGameplayLoader() 
     {
         SceneManager.LoadSceneAsync(SceneNames.GameplayLoader.ToString(), LoadSceneMode.Additive);
         SceneManager.sceneLoaded += OnLoaderLoaded;
@@ -28,7 +28,6 @@ public class MainMenu : MonoBehaviour
 
     private void OnLoaderLoaded(Scene scene, LoadSceneMode loadSceneMode) 
     {
-        SceneManager.LoadSceneAsync(SceneNames.MainScene.ToString(), LoadSceneMode.Additive);
         SceneManager.UnloadSceneAsync(SceneNames.MainMenu.ToString());
         SceneManager.sceneLoaded -= OnLoaderLoaded;
         SceneManager.sceneUnloaded += OnMenuUnloaded;
@@ -36,8 +35,15 @@ public class MainMenu : MonoBehaviour
 
     private void OnMenuUnloaded(Scene scene) 
     {
-        GameManager.Instance.FadeTransition(GameManager.TransitionType.FadeIn, 1.0f);
+        SceneManager.LoadScene(SceneNames.MainScene.ToString(), LoadSceneMode.Additive);
+        SceneManager.sceneLoaded += OnMainSceneLoaded;
         SceneManager.sceneUnloaded -= OnMenuUnloaded;
+    }
+
+    private void OnMainSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) 
+    {
+        SceneManager.SetActiveScene(scene);
+        SceneManager.sceneLoaded -= OnMainSceneLoaded;
     }
 
     public void ExitApp() 
