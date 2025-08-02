@@ -63,15 +63,16 @@ public class GameManager : MonoBehaviour
         switch (transition) 
         {
             case TransitionType.FadeIn:
-                blackScreen?.DOFade(0.0f, time);
+                blackScreen?.DOFade(0.0f, time).SetUpdate(true);
                 break;
             case TransitionType.FadeOut:
-                blackScreen?.DOFade(1.0f, time);
+                blackScreen?.DOFade(1.0f, time).SetUpdate(true);
                 break;
             case TransitionType.FadeOutAndIn:
                 Sequence sequence = DOTween.Sequence();
                 sequence.Append(blackScreen?.DOFade(1.0f, time/2));
                 sequence.Append(blackScreen?.DOFade(0.0f, time/2));
+                sequence.SetUpdate(true);
                 sequence.Play();
                 break;
         }

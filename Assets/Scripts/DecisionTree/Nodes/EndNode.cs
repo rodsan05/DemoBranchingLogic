@@ -11,14 +11,14 @@ public class EndNode : BaseNode {
     #endregion
 
     #region References
-    public UnityEvent callback;
+    public string endingText;
     #endregion
 
     #region Methods
     public override void OnNodeEnter()
     {
         base.OnNodeEnter();
-        callback.Invoke();
+        GameManager.Instance.DecisionManager?.SetupEnding(endingText);
     }
     #endregion
 }

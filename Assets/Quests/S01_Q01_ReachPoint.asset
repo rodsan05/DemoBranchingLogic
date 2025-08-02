@@ -15,4 +15,5 @@ MonoBehaviour:
   questType: 1
   temporalQuestItems:
   - {fileID: 6559557321268384948, guid: b65bd0db673da2d4383a20f493fe0f35, type: 3}
-  permanentQuestItems: []
+  permanentQuestItems:
+  - {fileID: 6272399965742300797, guid: 2aabe6db22675d341904f233836e92fd, type: 3}

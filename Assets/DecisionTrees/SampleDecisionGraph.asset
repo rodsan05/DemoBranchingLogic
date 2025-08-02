@@ -224,9 +224,8 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   entry: 0
-  callback:
-    m_PersistentCalls:
-      m_Calls: []
+  endingText: LAY DOWN AND WAIT:The best thing to do when you are lost is to stay
+    in place, just as your mother used to tell you.
 --- !u!114 &-1622363724792869867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,9 +349,8 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   entry: 0
-  callback:
-    m_PersistentCalls:
-      m_Calls: []
+  endingText: GOOD INTENTIONS:Finding a person that can help you is the best possible
+    outcome in some situations.
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,7 +376,7 @@ MonoBehaviour:
   - {fileID: -1010937771070125040}
   - {fileID: 1198726903117414742}
   - {fileID: 6698043162974534404}
-  current: {fileID: -8950055657851095294}
+  current: {fileID: 1198726903117414742}
 --- !u!114 &1049603992539264404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,7 +538,7 @@ MonoBehaviour:
   entry: 0
   choices:
   - I actually fell from the sky
-  - Just your typical afternoon walk
+  - Just an afternoon walk
 --- !u!114 &6698043162974534404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,6 +570,4 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   entry: 0
-  callback:
-    m_PersistentCalls:
-      m_Calls: []
+  endingText: LIAR, LIAR, PANTS ON FIRE:Lying doesn't solve things.

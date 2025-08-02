@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2164010979478349337, guid: 518e3eb6783580441a7532ea7b6b12d9, type: 3}
       propertyPath: m_Name
-      value: S01_Q01_QuestTriger Variant
+      value: S01_Q01_QuestTrigger Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7314192920621975442, guid: 518e3eb6783580441a7532ea7b6b12d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7314192920621975442, guid: 518e3eb6783580441a7532ea7b6b12d9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7314192920621975442, guid: 518e3eb6783580441a7532ea7b6b12d9, type: 3}
       propertyPath: m_LocalRotation.w

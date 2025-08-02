@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class DecisionManager : MonoBehaviour
 {
-    #region Properties
+    #region References
     [SerializeField]
     private DecisionPrompt decisionPromptScript;
+
+    [SerializeField]
+    private EndingScreen endingScreenScript;
 
     private DecisionNode currentDecisionNode;
     #endregion
@@ -35,6 +38,15 @@ public class DecisionManager : MonoBehaviour
 
             decisionPromptScript.HideChoicePrompt();
             GameManager.Instance.ResumeGameplay();
+        }
+    }
+
+    public void SetupEnding(string endingText) 
+    {
+        if (endingScreenScript) 
+        {
+            endingScreenScript.SetEndingText(endingText);
+            endingScreenScript.gameObject.SetActive(true);
         }
     }
     #endregion
