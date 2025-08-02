@@ -9,6 +9,11 @@ public class CinematicManager : MonoBehaviour
     #region References
     [SerializeField]
     private PlayableDirector director;
+
+    [SerializeField]
+    private Transform playerPosition;
+
+    public Transform PlayerPosition { get => playerPosition; set => playerPosition = value; }
     #endregion
 
     #region Methods

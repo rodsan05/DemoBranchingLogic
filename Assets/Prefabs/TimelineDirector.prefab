@@ -204,6 +204,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalSpine: {fileID: 938615974600050978}
+--- !u!1 &755033304246405364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1225134478639384962}
+  - component: {fileID: 6960128911070320976}
+  m_Layer: 0
+  m_Name: PlayerPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1225134478639384962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755033304246405364}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7737176879906798680}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &6960128911070320976
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755033304246405364}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1088461869291136870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,6 +2084,7 @@ Transform:
   - {fileID: 3560090435772124654}
   - {fileID: 8005769779117521017}
   - {fileID: 2834222025660226731}
+  - {fileID: 1225134478639384962}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &5959244362335805016
@@ -2155,6 +2210,14 @@ PlayableDirector:
     value: {fileID: 3179256867895412241}
   - key: {fileID: 6805681437042840368, guid: eb848ff98bfd5a14b9b6aa43dbf5d33f, type: 2}
     value: {fileID: 3697829367238083854}
+  - key: {fileID: 9000677000197519496, guid: 41a12c893cbe2e749ba973188927cf05, type: 2}
+    value: {fileID: 6960128911070320976}
+  - key: {fileID: 858300897039751991, guid: de8c8afad689053459716be85003c6f6, type: 2}
+    value: {fileID: 6960128911070320976}
+  - key: {fileID: -9088146602069159380, guid: cc2f2512972091142b877b413d537114, type: 2}
+    value: {fileID: 6960128911070320976}
+  - key: {fileID: -53783401960624363, guid: eb848ff98bfd5a14b9b6aa43dbf5d33f, type: 2}
+    value: {fileID: 6960128911070320976}
   m_ExposedReferences:
     m_References:
     - 83ad4366e6694e544bf0331ec6fe210c: {fileID: 0}
@@ -2171,6 +2234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   director: {fileID: 5959244362335805016}
+  playerPosition: {fileID: 1225134478639384962}
 --- !u!1 &7702385293565193147
 GameObject:
   m_ObjectHideFlags: 0

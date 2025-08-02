@@ -28,6 +28,14 @@ public class PlayerController : CharacterBase
         }
     }
 
+    public override void OnCinematicEnd()
+    {
+        base.OnCinematicEnd();
+
+        transform.position = GameManager.Instance.CinematicManager.PlayerPosition.position;
+        transform.rotation = GameManager.Instance.CinematicManager.PlayerPosition.rotation;
+    }
+
     public void OnMove(InputValue input)
     {
         var value = input.Get<Vector2>();
